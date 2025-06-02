@@ -1,0 +1,6 @@
+
+# Ignorer les fichiers générés automatiquement
+*.csv
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
