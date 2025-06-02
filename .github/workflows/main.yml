@@ -30,7 +30,7 @@ jobs:
           jupyter nbconvert --to notebook --execute Gestion_Parking.ipynb --output Resultat_Executé.ipynb
 
       - name: 📤 Sauvegarder le résultat
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: notebook-exécuté
           path: Resultat_Executé.ipynb
