@@ -1,5 +1,5 @@
 
-name: Exécuter le notebook Parking
+name: Exécuter le notebook Parking (sans artifact)
 
 on:
   push:
@@ -13,26 +13,23 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: 📥 Cloner le dépôt
+      - name:  Cloner le dépôt
         uses: actions/checkout@v3
 
-      - name: 🐍 Installer Python
+      - name:  Installer Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
-      - name: 📦 Installer les dépendances
+      - name:  Installer les dépendances
         run: |
           pip install --upgrade pip
+          pip install notebook
           pip install -r requirements.txt
 
       - name: 📓 Exécuter le notebook
         run: |
-          pip install notebook
           jupyter nbconvert --to notebook --execute Gestion_Parking.ipynb --output Resultat_Executé.ipynb
 
-      - name: 📤 Sauvegarder le résultat
-        uses: actions/upload-artifact@v1
-        with:
-          name: notebook-exécuté
-          path: Resultat_Executé.ipynb
+      - name: 📁 Afficher les fichiers générés
+        run: ls -lh
