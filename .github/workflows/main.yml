@@ -1,4 +1,5 @@
-name: 🚀 Exécuter le notebook Parking
+
+name: Exécuter le notebook Parking
 
 on:
   push:
@@ -27,11 +28,11 @@ jobs:
 
       - name: 📓 Exécuter le notebook
         run: |
+          pip install notebook
           jupyter nbconvert --to notebook --execute Gestion_Parking.ipynb --output Resultat_Executé.ipynb
 
       - name: 📤 Sauvegarder le résultat
-        uses: actions/upload-artifact@main
-
+        uses: actions/upload-artifact@v1
         with:
           name: notebook-exécuté
           path: Resultat_Executé.ipynb
